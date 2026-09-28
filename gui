@@ -59,3 +59,22 @@
         }
     </style>
 </head>
+<body class="min-h-screen flex flex-col justify-between bg-cinemaDark antialiased text-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80 px-6 py-4 flex justify-between items-center shadow-2xl">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="resetApp()">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-popcornGold text-xl shadow-inner">
+                <i class="fa-solid fa-popcorn"></i>
+            </div>
+            <div>
+                <span class="popcorn-gradient-text text-2xl font-black tracking-tight block leading-none">POPCORN</span>
+                <span class="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Movie Recommender</span>
+            </div>
+        </div>
+        <button onclick="resetApp()" class="flex items-center space-x-2 text-xs font-semibold bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 px-3 py-2 rounded-lg border border-zinc-700/60 transition duration-200">
+            <i class="fa-solid fa-rotate-right text-popcornGold"></i>
+            <span class="hidden sm:inline">Start Over</span>
+        </button>
+    </header>
+
