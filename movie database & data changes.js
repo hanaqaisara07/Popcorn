@@ -197,6 +197,7 @@ const person3Data = {
         }
     }
 };
+const movieDatabase = { ...person2Data, ...person3Data };
 
 // Merged Database Object
 const movieDatabase = { ...person2Data, ...person3Data };
