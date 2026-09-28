@@ -1,6 +1,6 @@
 // Movie Database & Data Structures
 
-const Data = {
+const movieDatabase = {
     action: {
         title: "Action Movies",
         vibes: [
@@ -194,4 +194,3 @@ const Data = {
         }
     }
 };
-
