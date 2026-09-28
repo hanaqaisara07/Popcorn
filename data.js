@@ -82,7 +82,6 @@ const Data = {
             }
         }
     }, 
-    
     romance: {
         title: "Romance Movies",
         vibes: [
@@ -195,7 +194,4 @@ const Data = {
         }
     }
 };
-const movieDatabase = { ...person2Data, ...person3Data };
 
-// Merged Database Object
-const movieDatabase = { ...person2Data, ...person3Data };
