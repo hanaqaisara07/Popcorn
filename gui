@@ -171,3 +171,31 @@
                 <!-- Dynamically populated options -->
             </div>
         </section>
+ <!-- STEP 3: Recommendation Result -->
+        <section id="result-section" class="hidden fade-in max-w-2xl mx-auto w-full">
+            <div class="glass-panel rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl">
+                <div id="movie-banner" class="h-64 bg-zinc-800 bg-cover bg-center relative p-6 flex flex-col justify-between">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cinemaPanel via-cinemaPanel/60 to-transparent"></div>
+                    <div class="relative z-10 flex justify-between items-start">
+                        <span id="movie-match-tag" class="bg-popcornGold text-cinemaDark text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Popcorn Recommendation</span>
+                        <button onclick="resetApp()" class="w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="relative z-10">
+                        <span id="movie-sub-badge" class="text-xs font-bold text-popcornGold uppercase tracking-widest block mb-1">Subgenre</span>
+                        <h2 id="movie-title" class="text-3xl md:text-4xl font-black text-white leading-tight">Movie Title</h2>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 space-y-6 bg-cinemaPanel">
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-zinc-400">
+                        <span class="text-amber-400 font-bold flex items-center gap-1"><i class="fa-solid fa-popcorn text-popcornGold"></i> <span id="movie-score">98%</span> Popcorn Score</span>
+                        <span class="border border-zinc-700 px-2 py-0.5 rounded text-zinc-300">4K Ultra HD</span>
+                        <span id="movie-duration"><i class="fa-regular fa-clock mr-1"></i> 2h 10m</span>
+                        <span id="movie-year" class="text-zinc-400">2023</span>
+                    </div>
+
+                    <p id="movie-description" class="text-zinc-300 text-sm md:text-base leading-relaxed">
+                        Movie description placeholder text...
+                    </p>
