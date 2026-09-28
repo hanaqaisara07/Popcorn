@@ -96,4 +96,27 @@
                 <span>Match</span>
             </span>
         </div>
+<!-- STEP 1: Genre Selection Grid -->
+        <section id="genre-section" class="fade-in text-center">
+            <h1 class="text-3xl md:text-5xl font-black mb-3 tracking-tight">Grab your popcorn! What are we watching?</h1>
+            <p class="text-zinc-400 text-sm md:text-base mb-10 max-w-xl mx-auto">Select a genre below to start filtering through curated movie choices.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Action -->
+                <div onclick="selectGenre('action')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-burst"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Action</h3>
+                    <p class="text-xs text-zinc-400">High octane chases, superhero sagas & thrillers.</p>
+                </div>
+
+                <!-- Comedy -->
+                <div onclick="selectGenre('comedy')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-face-laugh-squint"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Comedy</h3>
+                    <p class="text-xs text-zinc-400">Feel-good laughs, lighthearted fun & satire.</p>
+                </div>
 
