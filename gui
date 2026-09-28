@@ -77,4 +77,23 @@
             <span class="hidden sm:inline">Start Over</span>
         </button>
     </header>
+<main class="max-w-6xl mx-auto w-full px-4 py-8 flex-grow flex flex-col justify-center">
+
+        <!-- Progress Stepper -->
+        <div class="mb-10 flex justify-center items-center space-x-4 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+            <span id="step-1-indicator" class="text-popcornGold flex items-center space-x-2">
+                <span id="step-1-badge" class="w-7 h-7 rounded-full bg-popcornGold text-cinemaDark flex items-center justify-center text-xs font-black shadow-md shadow-amber-500/20">1</span>
+                <span>Genre</span>
+            </span>
+            <span class="text-zinc-800">&mdash;&mdash;</span>
+            <span id="step-2-indicator" class="flex items-center space-x-2">
+                <span id="step-2-badge" class="w-7 h-7 rounded-full bg-zinc-800 text-zinc-400 flex items-center justify-center text-xs font-bold">2</span>
+                <span>Vibe</span>
+            </span>
+            <span class="text-zinc-800">&mdash;&mdash;</span>
+            <span id="step-3-indicator" class="flex items-center space-x-2">
+                <span id="step-3-badge" class="w-7 h-7 rounded-full bg-zinc-800 text-zinc-400 flex items-center justify-center text-xs font-bold">3</span>
+                <span>Match</span>
+            </span>
+        </div>
 
