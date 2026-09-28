@@ -120,3 +120,54 @@
                     <p class="text-xs text-zinc-400">Feel-good laughs, lighthearted fun & satire.</p>
                 </div>
 
+<!-- Sci-Fi -->
+                <div onclick="selectGenre('scifi')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Sci-Fi</h3>
+                    <p class="text-xs text-zinc-400">Deep space exploration & mind-bending dystopias.</p>
+                </div>
+
+                <!-- Romance -->
+                <div onclick="selectGenre('romance')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Romance</h3>
+                    <p class="text-xs text-zinc-400">Rom-coms, emotional dramas & fantasy romance.</p>
+                </div>
+
+                <!-- Horror -->
+                <div onclick="selectGenre('horror')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-ghost"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Horror</h3>
+                    <p class="text-xs text-zinc-400">Supernatural haunts, slashers & monster scares.</p>
+                </div>
+
+                <!-- Thriller -->
+                <div onclick="selectGenre('thriller')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-mask"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Thriller</h3>
+                    <p class="text-xs text-zinc-400">Crime mysteries, mind games & survival drama.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: Vibe Selection -->
+        <section id="vibe-section" class="hidden fade-in text-center max-w-2xl mx-auto w-full">
+            <button onclick="goBackToStep1()" class="mb-6 inline-flex items-center space-x-2 text-xs font-semibold text-zinc-400 hover:text-popcornGold transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Genres</span>
+            </button>
+            <h2 id="vibe-title" class="text-2xl md:text-4xl font-extrabold mb-3">Refine Your Vibe</h2>
+            <p id="vibe-subtitle" class="text-zinc-400 text-sm mb-8">Choose a sub-preference to get your custom movie pick.</p>
+            
+            <div id="vibe-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Dynamically populated options -->
+            </div>
+        </section>
