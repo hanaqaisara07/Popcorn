@@ -199,3 +199,24 @@
                     <p id="movie-description" class="text-zinc-300 text-sm md:text-base leading-relaxed">
                         Movie description placeholder text...
                     </p>
+ <div class="pt-4 border-t border-zinc-800 flex flex-col sm:flex-row gap-3">
+                        <button class="flex-1 bg-popcornGold hover:bg-popcornYellow text-cinemaDark font-extrabold py-3 px-6 rounded-xl flex items-center justify-center space-x-2 transition shadow-lg shadow-amber-500/10">
+                            <i class="fa-solid fa-play text-sm"></i>
+                            <span>Watch Now</span>
+                        </button>
+                        <button onclick="resetApp()" class="flex-1 bg-zinc-800/80 hover:bg-zinc-700 text-white font-semibold py-3 px-6 rounded-xl flex items-center justify-center space-x-2 border border-zinc-700 transition">
+                            <i class="fa-solid fa-rotate-right text-popcornGold"></i>
+                            <span>Try Another Preference</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-6 text-center text-xs text-zinc-600 border-t border-zinc-900">
+        <p>Popcorn Movie Recommender by Group 9</p>
+    </footer>
+</body>
+</html>
