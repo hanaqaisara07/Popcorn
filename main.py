@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popcorn Movie Recommender</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        popcornGold: '#FFC107',
+                        popcornYellow: '#FFD54F',
+                        popcornDarkAmber: '#D97706',
+                        popcornOrange: '#FF9800',
+                        cinemaDark: '#0D0D11',
+                        cinemaPanel: '#16161E',
+                        cinemaCard: '#20202C',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+ <style>
+        body {
+            background-color: #0D0D11;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+        }
+        .card-hover {
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px -5px rgba(255, 193, 7, 0.25);
+        }
+        .glass-panel {
+            background: rgba(22, 22, 30, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .popcorn-gradient-text {
+            background: linear-gradient(135deg, #FFD54F 0%, #FFC107 50%, #FF9800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-cinemaDark antialiased text-gray-100">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-zinc-800/80 px-6 py-4 flex justify-between items-center shadow-2xl">
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="resetApp()">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-popcornGold text-xl shadow-inner">
+                <i class="fa-solid fa-popcorn"></i>
+            </div>
+            <div>
+                <span class="popcorn-gradient-text text-2xl font-black tracking-tight block leading-none">POPCORN</span>
+                <span class="text-[10px] uppercase tracking-widest text-zinc-400 font-semibold">Movie Recommender</span>
+            </div>
+        </div>
+        <button onclick="resetApp()" class="flex items-center space-x-2 text-xs font-semibold bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 px-3 py-2 rounded-lg border border-zinc-700/60 transition duration-200">
+            <i class="fa-solid fa-rotate-right text-popcornGold"></i>
+            <span class="hidden sm:inline">Start Over</span>
+        </button>
+    </header>
+<main class="max-w-6xl mx-auto w-full px-4 py-8 flex-grow flex flex-col justify-center">
+
+        <!-- Progress Stepper -->
+        <div class="mb-10 flex justify-center items-center space-x-4 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+            <span id="step-1-indicator" class="text-popcornGold flex items-center space-x-2">
+                <span id="step-1-badge" class="w-7 h-7 rounded-full bg-popcornGold text-cinemaDark flex items-center justify-center text-xs font-black shadow-md shadow-amber-500/20">1</span>
+                <span>Genre</span>
+            </span>
+            <span class="text-zinc-800">&mdash;&mdash;</span>
+            <span id="step-2-indicator" class="flex items-center space-x-2">
+                <span id="step-2-badge" class="w-7 h-7 rounded-full bg-zinc-800 text-zinc-400 flex items-center justify-center text-xs font-bold">2</span>
+                <span>Vibe</span>
+            </span>
+            <span class="text-zinc-800">&mdash;&mdash;</span>
+            <span id="step-3-indicator" class="flex items-center space-x-2">
+                <span id="step-3-badge" class="w-7 h-7 rounded-full bg-zinc-800 text-zinc-400 flex items-center justify-center text-xs font-bold">3</span>
+                <span>Match</span>
+            </span>
+        </div>
+<!-- STEP 1: Genre Selection Grid -->
+        <section id="genre-section" class="fade-in text-center">
+            <h1 class="text-3xl md:text-5xl font-black mb-3 tracking-tight">Grab your popcorn! What are we watching?</h1>
+            <p class="text-zinc-400 text-sm md:text-base mb-10 max-w-xl mx-auto">Select a genre below to start filtering through curated movie choices.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Action -->
+                <div onclick="selectGenre('action')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-burst"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Action</h3>
+                    <p class="text-xs text-zinc-400">High octane chases, superhero sagas & thrillers.</p>
+                </div>
+
+                <!-- Comedy -->
+                <div onclick="selectGenre('comedy')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-face-laugh-squint"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Comedy</h3>
+                    <p class="text-xs text-zinc-400">Feel-good laughs, lighthearted fun & satire.</p>
+                </div>
+
+<!-- Sci-Fi -->
+                <div onclick="selectGenre('scifi')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Sci-Fi</h3>
+                    <p class="text-xs text-zinc-400">Deep space exploration & mind-bending dystopias.</p>
+                </div>
+
+                <!-- Romance -->
+                <div onclick="selectGenre('romance')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Romance</h3>
+                    <p class="text-xs text-zinc-400">Rom-coms, emotional dramas & fantasy romance.</p>
+                </div>
+
+                <!-- Horror -->
+                <div onclick="selectGenre('horror')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-ghost"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Horror</h3>
+                    <p class="text-xs text-zinc-400">Supernatural haunts, slashers & monster scares.</p>
+                </div>
+
+                <!-- Thriller -->
+                <div onclick="selectGenre('thriller')" class="card-hover glass-panel p-6 rounded-2xl cursor-pointer border border-zinc-800 hover:border-popcornGold group flex flex-col items-center justify-center">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-popcornGold border border-amber-500/20 flex items-center justify-center text-2xl mb-4 group-hover:bg-popcornGold group-hover:text-cinemaDark transition-all">
+                        <i class="fa-solid fa-mask"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1 text-white">Thriller</h3>
+                    <p class="text-xs text-zinc-400">Crime mysteries, mind games & survival drama.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: Vibe Selection -->
+        <section id="vibe-section" class="hidden fade-in text-center max-w-2xl mx-auto w-full">
+            <button onclick="goBackToStep1()" class="mb-6 inline-flex items-center space-x-2 text-xs font-semibold text-zinc-400 hover:text-popcornGold transition">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Genres</span>
+            </button>
+            <h2 id="vibe-title" class="text-2xl md:text-4xl font-extrabold mb-3">Refine Your Vibe</h2>
+            <p id="vibe-subtitle" class="text-zinc-400 text-sm mb-8">Choose a sub-preference to get your custom movie pick.</p>
+            
+            <div id="vibe-options-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Dynamically populated options -->
+            </div>
+        </section>
+ <!-- STEP 3: Recommendation Result -->
+        <section id="result-section" class="hidden fade-in max-w-2xl mx-auto w-full">
+            <div class="glass-panel rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl">
+                <div id="movie-banner" class="h-64 bg-zinc-800 bg-cover bg-center relative p-6 flex flex-col justify-between">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cinemaPanel via-cinemaPanel/60 to-transparent"></div>
+                    <div class="relative z-10 flex justify-between items-start">
+                        <span id="movie-match-tag" class="bg-popcornGold text-cinemaDark text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Popcorn Recommendation</span>
+                        <button onclick="resetApp()" class="w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <div class="relative z-10">
+                        <span id="movie-sub-badge" class="text-xs font-bold text-popcornGold uppercase tracking-widest block mb-1">Subgenre</span>
+                        <h2 id="movie-title" class="text-3xl md:text-4xl font-black text-white leading-tight">Movie Title</h2>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 space-y-6 bg-cinemaPanel">
+                    <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-zinc-400">
+                        <span class="text-amber-400 font-bold flex items-center gap-1"><i class="fa-solid fa-popcorn text-popcornGold"></i> <span id="movie-score">98%</span> Popcorn Score</span>
+                        <span class="border border-zinc-700 px-2 py-0.5 rounded text-zinc-300">4K Ultra HD</span>
+                        <span id="movie-duration"><i class="fa-regular fa-clock mr-1"></i> 2h 10m</span>
+                        <span id="movie-year" class="text-zinc-400">2023</span>
+                    </div>
+
+                    <p id="movie-description" class="text-zinc-300 text-sm md:text-base leading-relaxed">
+                        Movie description placeholder text...
+                    </p>
+ <div class="pt-4 border-t border-zinc-800 flex flex-col sm:flex-row gap-3">
+                        <button class="flex-1 bg-popcornGold hover:bg-popcornYellow text-cinemaDark font-extrabold py-3 px-6 rounded-xl flex items-center justify-center space-x-2 transition shadow-lg shadow-amber-500/10">
+                            <i class="fa-solid fa-play text-sm"></i>
+                            <span>Watch Now</span>
+                        </button>
+                        <button onclick="resetApp()" class="flex-1 bg-zinc-800/80 hover:bg-zinc-700 text-white font-semibold py-3 px-6 rounded-xl flex items-center justify-center space-x-2 border border-zinc-700 transition">
+                            <i class="fa-solid fa-rotate-right text-popcornGold"></i>
+                            <span>Try Another Preference</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-6 text-center text-xs text-zinc-600 border-t border-zinc-900">
+        <p>Popcorn Movie Recommender by Group 9</p>
+    </footer>
+</body>
+</html>
