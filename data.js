@@ -81,10 +81,8 @@ const Data = {
                 banner: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80"
             }
         }
-    }
-};
-
-const person3Data = {
+    }, 
+    
     romance: {
         title: "Romance Movies",
         vibes: [
