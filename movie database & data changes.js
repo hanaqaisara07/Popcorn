@@ -1,5 +1,4 @@
 // Movie Database & Data Structures
-
 const Data = {
     action: {
         title: "Action Movies",
@@ -197,6 +196,4 @@ const person3Data = {
         }
     }
 };
-
-// Merged Database Object
 const movieDatabase = { ...person2Data, ...person3Data };
